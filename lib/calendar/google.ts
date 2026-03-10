@@ -65,7 +65,7 @@ export async function fetchCalendarEvents(
   timeMax?: string,
   maxResults: number = 250
 ): Promise<CalendarEvent[]> {
-  if (DEBUG) console.log('fetchCalendarEvents called with:', {
+  if (DEBUG) console.log('🔍 fetchCalendarEvents called with:', {
     calendarId,
     timeMin,
     timeMax,
@@ -74,7 +74,7 @@ export async function fetchCalendarEvents(
   });
 
   if (!GOOGLE_CALENDAR_API_KEY) {
-    if (DEBUG) console.warn('Google Calendar API key not configured');
+    if (DEBUG) console.warn('❌ Google Calendar API key not configured');
     return [];
   }
 
@@ -94,7 +94,7 @@ export async function fetchCalendarEvents(
     }
 
     const url = `${GOOGLE_API_BASE_URL}/calendars/${encodeURIComponent(calendarId)}/events?${params.toString()}`;
-    if (DEBUG) console.log('Making API request to:', url);
+    if (DEBUG) console.log('🌐 Making API request to:', url);
 
     const response = await fetch(url, {
       method: 'GET',
@@ -103,7 +103,7 @@ export async function fetchCalendarEvents(
       },
     });
 
-    if (DEBUG) console.log('API Response status:', response.status, response.statusText);
+    if (DEBUG) console.log('📡 API Response status:', response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -112,8 +112,8 @@ export async function fetchCalendarEvents(
     }
 
     const data: GoogleCalendarEventsResponse = await response.json();
-    if (DEBUG) console.log('API Response data:', data);
-    if (DEBUG) console.log('Number of events found:', data.items?.length || 0);
+    if (DEBUG) console.log('📅 API Response data:', data);
+    if (DEBUG) console.log('📅 Number of events found:', data.items?.length || 0);
     
     return data.items?.map(convertGoogleEventToCalendarEvent) || [];
   } catch (error) {
@@ -128,10 +128,10 @@ export async function fetchCalendarEvents(
 export async function fetchCalendarMetadata(
   calendarId: string = GOOGLE_CALENDAR_ID
 ): Promise<CalendarMetadata | null> {
-  if (DEBUG) console.log('fetchCalendarMetadata called with calendarId:', calendarId);
+  if (DEBUG) console.log('🔍 fetchCalendarMetadata called with calendarId:', calendarId);
 
   if (!GOOGLE_CALENDAR_API_KEY) {
-    if (DEBUG) console.warn('Google Calendar API key not configured');
+    if (DEBUG) console.warn('❌ Google Calendar API key not configured');
     return null;
   }
 
@@ -141,7 +141,7 @@ export async function fetchCalendarMetadata(
     });
 
     const url = `${GOOGLE_API_BASE_URL}/calendars/${encodeURIComponent(calendarId)}?${params.toString()}`;
-    if (DEBUG) console.log('Making metadata request to:', url);
+    if (DEBUG) console.log('🌐 Making metadata request to:', url);
 
     const response = await fetch(url, {
       method: 'GET',
@@ -150,7 +150,7 @@ export async function fetchCalendarMetadata(
       },
     });
 
-    if (DEBUG) console.log('Metadata API Response status:', response.status, response.statusText);
+    if (DEBUG) console.log('📡 Metadata API Response status:', response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -159,9 +159,9 @@ export async function fetchCalendarMetadata(
     }
 
     const data = await response.json();
-    if (DEBUG) console.log('Raw metadata response:', data);
+    if (DEBUG) console.log('📋 Raw metadata response:', data);
     const converted = convertGoogleCalendarToMetadata(data);
-    if (DEBUG) console.log('Converted metadata:', converted);
+    if (DEBUG) console.log('📋 Converted metadata:', converted);
     return converted;
   } catch (error) {
     console.error('❌ Error fetching calendar metadata:', error);
@@ -236,14 +236,14 @@ export async function getEventsForMonth(
   const timeMax = endDate.toISOString();
   
   if (DEBUG) {
-    console.log('getEventsForMonth called with:', { year, month, monthName: firstDayOfMonth.toLocaleString('default', { month: 'long' }) });
-    console.log('Calendar grid range:', {
+    console.log('📅 getEventsForMonth called with:', { year, month, monthName: firstDayOfMonth.toLocaleString('default', { month: 'long' }) });
+    console.log('📅 Calendar grid range:', {
       startDate: startDate.toISOString(),
       endDate: endDate.toISOString(),
       firstDayOfWeek,
       lastDayOfWeek
     });
-    console.log('timeMin:', timeMin, 'timeMax:', timeMax);
+    console.log('📅 timeMin:', timeMin, 'timeMax:', timeMax);
   }
   
   return fetchCalendarEvents(calendarId, timeMin, timeMax);
@@ -305,7 +305,7 @@ export function getAddToCalendarUrl(event: CalendarEvent): string {
  */
 export async function testCalendarAccess(): Promise<void> {
   if (DEBUG) {
-    console.log('Testing calendar access...');
+    console.log('🧪 Testing calendar access...');
     console.log('Environment variables:');
     console.log('- NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY:', !!process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY);
     console.log('- NEXT_PUBLIC_GOOGLE_CALENDAR_ID:', process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_ID);
@@ -316,12 +316,12 @@ export async function testCalendarAccess(): Promise<void> {
   try {
     const events = await fetchCalendarEvents();
     if (DEBUG) {
-      console.log('Calendar events test:', events.length, 'events found');
+      console.log('✅ Calendar events test:', events.length, 'events found');
       if (events.length > 0) {
-        console.log('Sample event:', events[0]);
+        console.log('📅 Sample event:', events[0]);
       }
     }
   } catch (error) {
-    console.error('Calendar access test failed:', error);
+    console.error('❌ Calendar access test failed:', error);
   }
 }
