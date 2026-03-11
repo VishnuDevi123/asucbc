@@ -11,20 +11,19 @@ import {
   TiltCard,
   Container,
   Badge,
-  Divider,
 } from "../components/ui";
 
 const stats = [
   { value: "15K+", label: "Impressions" },
   { value: "500+", label: "Members" },
-  { value: "900+", label: "Email List" },
+  { value: "1,000+", label: "Email List" },
   { value: "#1", label: "of 41 Clubs" },
 ];
 
 const whyCards = [
   {
     title: "Multi-Channel Reach",
-    body: "Your brand featured across Instagram, X (Twitter), LinkedIn, Discord, our website, and through in-person signage and mentions at the event. Gold and Silver tiers also get access to our 900+ person email blast.",
+    body: "Your brand featured across Instagram, X (Twitter), LinkedIn, Discord, our website, and through in-person signage and mentions at the event. Gold and Silver tiers also get access to our 1,000+ person email blast.",
   },
   {
     title: "Proven Track Record",
@@ -48,7 +47,7 @@ const tiers = [
     features: [
       "Logo on website, all socials, and event materials",
       "Marketing across Instagram, X, LinkedIn, Discord",
-      "Inclusion in 900+ person email blast",
+      "Inclusion in 1,000+ person email blast",
       "Prominent in-person branding at HackASU",
       "Speaking slot or product demo opportunity",
       "Mention in event opening and closing ceremonies",
@@ -61,7 +60,7 @@ const tiers = [
     features: [
       "Logo on website, all socials, and event materials",
       "Marketing across Instagram, X, LinkedIn, Discord",
-      "Inclusion in 900+ person email blast",
+      "Inclusion in 1,000+ person email blast",
       "In-person branding at HackASU",
       "Mention during event announcements",
     ],
@@ -82,7 +81,7 @@ const tiers = [
 const comparisonRows = [
   { benefit: "Website logo placement", gold: true, silver: true, bronze: false },
   { benefit: "Social media marketing (IG, X, LinkedIn, Discord)", gold: true, silver: true, bronze: true },
-  { benefit: "900+ email blast inclusion", gold: true, silver: true, bronze: false },
+  { benefit: "1,000+ email blast inclusion", gold: true, silver: true, bronze: false },
   { benefit: "In-person event branding", gold: true, silver: true, bronze: false },
   { benefit: "Speaking slot / product demo", gold: true, silver: false, bronze: false },
   { benefit: "Opening & closing ceremony mention", gold: true, silver: false, bronze: false },
@@ -90,7 +89,7 @@ const comparisonRows = [
 
 const audienceStats = [
   { value: "15K+", label: "Impressions (last hackathon)" },
-  { value: "900+", label: "Emails" },
+  { value: "1,000+", label: "Emails" },
   { value: "890+", label: "Discord members" },
   { value: "500+", label: "Semester signups" },
 ];
@@ -202,10 +201,6 @@ export default function SponsorPage() {
           </motion.div>
         </Container>
 
-        <Container size="lg">
-          <Divider variant="gradient" />
-        </Container>
-
         {/* Why HackASU */}
         <Container size="lg" animate className="space-y-8 mt-8">
           <div>
@@ -225,7 +220,7 @@ export default function SponsorPage() {
               className="mt-4 max-w-2xl leading-relaxed"
             >
               ASU&apos;s Claude Builder Club is the largest among 41 universities
-              nationwide, with 900+ email subscribers and 890+ Discord members.
+              nationwide, with 1,000+ email subscribers and 890+ Discord members.
               HackASU brings together ambitious student engineers, designers, and
               entrepreneurs for a weekend of intensive building with
               cutting-edge AI tools. Your sponsorship puts your brand directly
@@ -272,10 +267,6 @@ export default function SponsorPage() {
               </motion.div>
             ))}
           </div>
-        </Container>
-
-        <Container size="lg" className="mt-8">
-          <Divider variant="gradient" />
         </Container>
 
         {/* Sponsorship Tiers */}
@@ -462,10 +453,6 @@ export default function SponsorPage() {
           </motion.div>
         </Container>
 
-        <Container size="lg" className="mt-8">
-          <Divider variant="gradient" />
-        </Container>
-
         {/* Audience */}
         <Container size="lg" animate className="space-y-8 mt-8">
           <div>
@@ -553,8 +540,8 @@ export default function SponsorPage() {
                   className="!text-sm leading-6"
                 >
                   Anthropic (Platinum), Polymarket (Gold), Ether.fi (Bronze),
-                  Acorns, StreetSmart &mdash; companies that trust us to
-                  connect them with the next generation of builders.
+                  Base (Bronze), Acorns, StreetSmart &mdash; companies that
+                  trust us to connect them with the next generation of builders.
                 </Text>
               </TiltCard>
             </motion.div>
@@ -588,17 +575,13 @@ export default function SponsorPage() {
                   size="sm"
                   className="!text-sm leading-6"
                 >
-                  Instagram, X (Twitter), LinkedIn, Discord, 900+ email list,
+                  Instagram, X (Twitter), LinkedIn, Discord, 1,000+ email list,
                   claudebuilder.club, and in-person events on ASU&apos;s Tempe
                   campus.
                 </Text>
               </TiltCard>
             </motion.div>
           </div>
-        </Container>
-
-        <Container size="lg" className="mt-8">
-          <Divider variant="gradient" />
         </Container>
 
         {/* CTA */}
@@ -619,7 +602,7 @@ export default function SponsorPage() {
           </Text>
           <div className="flex flex-col items-center gap-3 pt-2">
             <Link
-              href="mailto:shivenshekar01@gmail.com?subject=HackASU%20Sponsorship%20Inquiry"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-xl border border-transparent bg-[var(--theme-button-bg)] px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[var(--theme-button-hover-bg)] hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--theme-text-accent)]"
             >
               Get in Touch &rarr;
