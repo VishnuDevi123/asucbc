@@ -129,7 +129,7 @@ function SponsorCard({
           <img
             src={logo}
             alt={`${name} logo`}
-            className={`max-w-full max-h-full object-contain ${name === "Airpost" ? "invert dark:invert-0" : "dark:invert dark:hue-rotate-180"}`}
+            className={`max-w-full max-h-full object-contain ${name === "Airpost" ? "invert dark:invert-0" : name === "Tamagrow" ? "" : "dark:invert dark:hue-rotate-180"}`}
           />
         </div>
       )}
@@ -533,9 +533,9 @@ export default function Hackathon2() {
               delay={0.2}
             />
             <SponsorCard
-              name="Tamago Social"
-              url="https://tamagosocial.dev/"
-              logo="/assets/hackathon/sponsors/tamago.webp"
+              name="Tamagrow"
+              url="https://tamagrow.app/"
+              logo="/assets/hackathon/sponsors/tamagrow.webp"
               description="Turn GitHub commits into social posts"
               delay={0.25}
             />
