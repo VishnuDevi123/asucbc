@@ -104,6 +104,84 @@ function TrackCard({ icon, title, description, delay = 0 }: TrackCardProps) {
   );
 }
 
+interface SponsorCardProps {
+  name: string;
+  url?: string;
+  logo?: string;
+  description?: string;
+  delay?: number;
+}
+
+function SponsorCard({
+  name,
+  url,
+  logo,
+  description,
+  delay = 0,
+}: SponsorCardProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const content = (
+    <div className="h-full flex flex-col items-center justify-center rounded-xl p-6 bg-[var(--theme-card-bg)] border-2 border-[var(--theme-card-border)] hover:border-[var(--theme-text-accent)] shadow-lg hover:shadow-2xl transition-all">
+      {logo && (
+        <div className="relative w-full h-16 flex items-center justify-center mb-4">
+          <img
+            src={logo}
+            alt={`${name} logo`}
+            className="max-w-full max-h-full object-contain dark:invert dark:hue-rotate-180"
+          />
+        </div>
+      )}
+      <h3 className="font-bold text-lg text-center text-[var(--theme-text-primary)] mb-2">
+        {name}
+      </h3>
+      {description && (
+        <p className="text-sm text-center text-[var(--theme-text-dark)] leading-relaxed">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                delay,
+                type: "spring",
+                stiffness: 60,
+                damping: 15,
+              },
+            }
+          : { opacity: 0, scale: 0.9 }
+      }
+      whileHover={{ scale: 1.05, y: -8 }}
+      transition={{ type: "spring", stiffness: 60, damping: 15 }}
+      className="h-full"
+    >
+      {url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="h-full block"
+        >
+          {content}
+        </a>
+      ) : (
+        content
+      )}
+    </motion.div>
+  );
+}
+
 export default function Hackathon2() {
   return (
     <div className="max-h-full flex flex-col">
@@ -395,6 +473,75 @@ export default function Hackathon2() {
                 description="Winners announced and closing remarks"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="py-16 px-4 sm:px-8 bg-gradient-to-b from-[var(--theme-gradient-accent)] to-transparent">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <Heading level="h2" className="text-4xl sm:text-5xl font-bold mb-4">
+              Our{" "}
+              <span className="text-[var(--theme-text-accent)]">Sponsors</span>
+            </Heading>
+            <Text size="lg" variant="secondary">
+              Thank you to our amazing sponsors who make this event possible
+            </Text>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+            <SponsorCard
+              name="Serpico AI Learning Center"
+              url="https://www.ailearningcenter.ai/"
+              description="Hiring AI Operations Specialist (part-time)"
+              delay={0}
+            />
+            <SponsorCard
+              name="Airpost"
+              url="https://www.airpost.ai/"
+              description="Hiring Full-Time AI SDE — technical & non-technical welcome"
+              delay={0.05}
+            />
+            <SponsorCard
+              name="Insforge"
+              url="https://insforge.dev/"
+              logo="/assets/hackathon/sponsors/insforge.svg"
+              description="Free API credits for participants (YC '26)"
+              delay={0.1}
+            />
+            <SponsorCard
+              name="Automation Interns"
+              url="https://www.automationinterns.com/"
+              description="Hiring AI SDE & Operations Interns"
+              delay={0.15}
+            />
+            <SponsorCard
+              name="Red Bull"
+              url="https://redbull.com"
+              logo="/assets/hackathon/sponsors/redbull.png"
+              description="Free RedBull"
+              delay={0.2}
+            />
+            <SponsorCard
+              name="Tamago Social"
+              url="https://tamagosocial.dev/"
+              description="Turn GitHub commits into social posts"
+              delay={0.25}
+            />
+            <SponsorCard
+              name="TinyFish"
+              url="https://www.tinyfish.ai/"
+              logo="/assets/hackathon/sponsors/tinyfish.svg"
+              description="Free suite credits, prizes for social posts & cookbook PRs, accelerator golden tickets for winners. Hiring Product Growth Intern"
+              delay={0.3}
+            />
           </div>
         </div>
       </section>
