@@ -358,7 +358,11 @@ export default function Hackathon2() {
                 description="Breakfast and status updates"
               />
               <ScheduleItem
+<<<<<<< HEAD
                 time="12:00 PM"
+=======
+                time="1:30 PM"
+>>>>>>> 24f4446 (Update hackathon2 landing page)
                 title="Lunch Break"
                 description="Refuel and recharge"
               />
