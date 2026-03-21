@@ -431,12 +431,12 @@ export default function Hackathon2() {
                 Day 2 - Saturday
               </h3>
               <ScheduleItem
-                time="9:00 AM"
+                time="10:00 AM"
                 title="Morning Check-in"
                 description="Breakfast and status updates"
               />
               <ScheduleItem
-                time="12:00 PM"
+                time="1:30 PM"
                 title="Lunch Break"
                 description="Refuel and recharge"
               />
@@ -446,9 +446,9 @@ export default function Hackathon2() {
                 description="Learn new skills and techniques"
               />
               <ScheduleItem
-                time="6:00 PM"
-                title="Dinner & Activities"
-                description="Evening meal and fun activities"
+                time="4:00 PM"
+                title="Event Closed for the Day"
+                description=""
               />
             </div>
 
