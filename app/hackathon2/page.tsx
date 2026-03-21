@@ -458,7 +458,7 @@ export default function Hackathon2() {
                 Day 3 - Sunday
               </h3>
               <ScheduleItem
-                time="9:00 AM"
+                time="10:00 AM"
                 title="Final Sprint + Check-In"
                 description="Polish your projects"
               />
@@ -550,7 +550,9 @@ export default function Hackathon2() {
               name="ada."
               url="https://tryada.app/"
               logo="/assets/hackathon/sponsors/ada.png"
-              description={"The AI Secretary for your Phone.\nHiring AI SDE Intern — Summer 2026"}
+              description={
+                "The AI Secretary for your Phone.\nHiring AI SDE Intern — Summer 2026"
+              }
               delay={0.35}
             />
           </div>
